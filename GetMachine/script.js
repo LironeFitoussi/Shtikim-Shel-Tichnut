@@ -1,16 +1,17 @@
 function getOS() {
-    const platform = navigator.userAgent;
+    const { platform, userAgent } = navigator;
 
     switch (true) {
-        case /iPhone/.test(platform):
-            return 'iOS';
         case /Mac/.test(platform):
+            if (/iPhone|iPad|iPod/.test(userAgent)) {
+                return 'iOS';
+            }
             return 'Mac';
         case /Win/.test(platform):
             return 'Windows';
         case /Linux/.test(platform):
             return 'Linux';
-        case /Android/.test(platform):
+        case /Android/.test(userAgent):
             return 'Android';
         default:
             return 'Unknown';
