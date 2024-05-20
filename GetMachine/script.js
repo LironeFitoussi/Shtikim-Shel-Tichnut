@@ -1,21 +1,23 @@
 function getOS() {
-    const { platform, userAgent } = navigator;
+    const userAgent = navigator.userAgent;
 
-    switch (true) {
-        case /Mac/.test(platform):
-            if (/iPhone|iPad|iPod/.test(userAgent)) {
-                return 'iOS';
-            }
-            return 'Mac';
-        case /Win/.test(platform):
-            return 'Windows';
-        case /Linux/.test(platform):
-            return 'Linux';
-        case /Android/.test(userAgent):
-            return 'Android';
-        default:
-            return 'Unknown';
+    if (/Windows/.test(userAgent)) {
+        return 'Windows';
     }
+    if (/Macintosh|MacIntel|MacPPC|Mac68K/.test(userAgent)) {
+        return 'Mac';
+    }
+    if (/iPhone|iPad|iPod/.test(userAgent)) {
+        return 'iOS';
+    }
+    if (/Android/.test(userAgent)) {
+        return 'Android';
+    }
+    if (/Linux/.test(userAgent)) {
+        return 'Linux';
+    }
+
+    return 'Unknown';
 }
 
 document.getElementById('detectBtn').addEventListener('click', function() {
