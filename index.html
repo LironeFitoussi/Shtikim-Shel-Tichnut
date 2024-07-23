@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חשב מס דלק</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>חשב מס דלק</h1>
+        <input type="number" id="price" placeholder="אנא הכנס את המחיר לליטר:">
+        <input type="number" id="total" placeholder='כמה שילמת בסך הכל: '>
+        <button onclick="calcDelek()">חשב</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calcDelek() {
+            const price = parseFloat(document.getElementById('price').value);
+            const total = parseFloat(document.getElementById('total').value);
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(price) || price < 0) {
+                resultDiv.textContent = 'לא הכנסת סכום תקין';
+            } else if (isNaN(total) || total < 0) {
+                resultDiv.textContent = 'לא הכנסת סכום תקין';
+            } else {
+                const totalFilled = total / price;
+                resultDiv.textContent = `מילאת סה״כ ${totalFilled.toFixed(2)}`;
+            }
+        }
+    </script>
+</body>
+</html>
