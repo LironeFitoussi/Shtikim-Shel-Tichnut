@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Examples with CSS</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 20px;
+        line-height: 1.6;
+      }
+      h1,
+      h2 {
+        color: #007bff;
+      }
+      .example-box {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+        padding: 20px;
+      }
+      .example-box h2 {
+        margin-top: 0;
+      }
+      code {
+        background-color: #f1f1f1;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-family: Consolas, monospace;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      form {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      input[type="number"] {
+        width: 60px;
+        padding: 5px;
+        font-size: 16px;
+      }
+      progress,
+      meter {
+        width: 100%;
+        height: 20px;
+        border-radius: 5px;
+      }
+      dialog {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+      }
+      .template-container {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>HTML Examples with CSS</h1>
+
+    <div class="example-box">
+      <h2>1. <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code></h2>
+      <details>
+        <summary>More Information</summary>
+        <p>additional content</p>
+      </details>
+    </div>
+
+    <div class="example-box">
+      <h2>2. <code>&lt;template&gt;</code></h2>
+      <template id="my-template">
+        <div
+          class="item"
+          style="
+            background-color: #e3f2fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          "
+        >
+          This is a reusable item
+        </div>
+      </template>
+      <button onclick="addTemplate()">Add Item</button>
+      <div class="template-container"></div>
+      <p>
+        The <code>&lt;template&gt;</code> tag is not displayed directly on the
+        page. Click the button to clone and insert the content into the DOM.
+      </p>
+    </div>
+
+    <div class="example-box">
+      <h2>3. <code>&lt;dialog&gt;</code></h2>
+      <dialog id="myDialog">
+        <p>This is a dialog box</p>
+        <button onclick="document.getElementById('myDialog').close()">
+          Close
+        </button>
+      </dialog>
+      <button onclick="document.getElementById('myDialog').showModal()">
+        Open Dialog
+      </button>
+    </div>
+
+    <div class="example-box">
+      <h2>4. <code>&lt;output&gt;</code></h2>
+      <form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+        <input type="number" id="a" value="50" /> +
+        <input type="number" id="b" value="50" />
+        <output name="result" for="a b">100</output>
+      </form>
+    </div>
+
+    <div class="example-box">
+      <h2>5. <code>&lt;progress&gt;</code> and <code>&lt;meter&gt;</code></h2>
+      <p>Progress:</p>
+      <progress value="70" max="100">70%</progress>
+      <p>Meter:</p>
+      <meter min="0" max="100" value="70">70%</meter>
+    </div>
+
+    <script>
+      function addTemplate() {
+        // Get the template element
+        const template = document.getElementById("my-template");
+        // Clone the template content
+        const clone = template.content.cloneNode(true);
+        // Append the cloned content to the container
+        document.querySelector(".template-container").appendChild(clone);
+      }
+    </script>
+  </body>
+</html>
